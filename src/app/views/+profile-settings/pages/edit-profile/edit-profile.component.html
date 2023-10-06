@@ -1,0 +1,232 @@
+<div
+  class="flex h-14 flex-row items-center justify-between border-b-2 border-solid border-slate-300 bg-white px-4 py-3 tablet:fixed tablet:z-20 tablet:h-16 tablet:w-full"
+>
+  <div class="flex flex-row items-center gap-3">
+    <fa-icon
+      [icon]="navArrowLeftIcon"
+      class="hidden tablet:flex"
+      (click)="goBack()"
+    ></fa-icon>
+    <span class="text-xl font-medium uppercase text-slate-600">{{
+      "profile.editProfile" | translate
+    }}</span>
+  </div>
+  <button
+    (click)="onSubmitProfileForm()"
+    [disabled]="profileForm.invalid"
+    class="rounded-full bg-primary px-5 py-1.5 text-sm font-medium uppercase text-white disabled:opacity-50"
+  >
+    {{ "save" | translate }}
+  </button>
+</div>
+<div class="w-[600px] tablet:w-full tablet:pt-14">
+  <ng-container *ngIf="profile">
+    <!---PROFILE BANNER--->
+    <div
+      class="banner max-h-[200px] min-h-[143px] sm:max-h-60 sm:min-h-[220px]"
+    >
+      <a (click)="onChangeBannerImage()">
+        <div
+          class="absolute bottom-0 left-0 right-0 top-0 opacity-100 delay-1000"
+        >
+          <div
+            class="relative w-full cursor-pointer bg-profile-default-banner bg-cover bg-center pb-[40%]"
+          >
+            <button
+              class="absolute right-5 top-3"
+              *ngIf="profile.cover"
+              (click)="$event.stopPropagation(); onDeleteBannerImage()"
+            >
+              <fa-icon [icon]="trashIcon" class="text-white"></fa-icon>
+            </button>
+            <div
+              class="absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4"
+            >
+              <fa-icon [icon]="cameraIcon" class="text-lg text-white"></fa-icon>
+            </div>
+            <img *ngIf="profile.cover" [src]="profile.cover" />
+          </div>
+        </div>
+      </a>
+    </div>
+    <!---PROFILE PHOTO--->
+    <div class="flex justify-between p-7">
+      <div class="z-10 -mt-20">
+        <div class="photo-wrapper cursor-pointer">
+          <a (click)="onChangeProfileImage()">
+            <div
+              class="absolute bottom-0 left-0 right-0 top-0 rounded-full bg-slate-700 bg-opacity-40"
+            >
+              <div
+                class="absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4"
+              >
+                <fa-icon
+                  [icon]="cameraIcon"
+                  class="text-lg text-white"
+                ></fa-icon>
+              </div>
+              <button
+                *ngIf="profile.avatar"
+                (click)="$event.stopPropagation(); onDeleteProfileImage()"
+                class="absolute bottom-0 right-0 z-10 h-8 w-8 rounded-full bg-white shadow"
+              >
+                <fa-icon [icon]="trashIcon" class="text-black"></fa-icon>
+              </button>
+            </div>
+          </a>
+          <img
+            class="profile-photo"
+            *ngIf="profile.avatar"
+            [src]="profile.avatar"
+            onerror="this.src='assets/angular.png'"
+          />
+          <img
+            class="profile-photo bg-primary"
+            *ngIf="!profile.avatar"
+            src="assets/angular.png"
+          />
+        </div>
+      </div>
+    </div>
+    <!---PROFILE FORM--->
+    <form [formGroup]="profileForm" [formData]="profile$ | async" tfConnectForm>
+      <div
+        class="flex flex-col gap-6 border-b-2 border-solid border-slate-300 px-5 pb-5"
+      >
+        <!--Username-->
+        <mat-form-field>
+          <mat-label>
+            <span class="font-medium capitalize">{{
+              "profile.username" | translate
+            }}</span>
+          </mat-label>
+          <div matPrefix>@</div>
+          <input
+            matInput
+            class="form-input pl-6"
+            formControlName="username"
+            placeholder="{{ 'profile.username' | translate }}"
+            [maxlength]="displayNameMaxLength"
+          />
+          <mat-hint class="ml-2 text-sm text-slate-500"
+            >{{ appUrl }}/{{ username?.value }}</mat-hint
+          >
+        </mat-form-field>
+        <!--Display Name-->
+        <mat-form-field>
+          <mat-label>
+            <span class="font-medium">{{
+              "profile.displayName" | translate
+            }}</span>
+          </mat-label>
+          <input
+            matInput
+            class="form-input"
+            #displayName
+            formControlName="displayName"
+            [maxlength]="displayNameMaxLength"
+            placeholder="{{ 'profile.displayName' | translate }}"
+            tfOnlyAllow
+            [allowRegex]="'[a-zA-Z0-9 ]'"
+          />
+          <mat-hint [align]="'end'">
+            <span class="text-right text-sm text-slate-500"
+              >{{ displayName.value.length }}/{{ displayNameMaxLength }}</span
+            >
+          </mat-hint>
+        </mat-form-field>
+        <!--Bio-->
+        <mat-form-field>
+          <mat-label class="font-medium">{{
+            "profile.bio" | translate
+          }}</mat-label>
+
+          <textarea
+            class="form-input"
+            #bio
+            matInput
+            formControlName="biography"
+            [maxlength]="bioMaxLength"
+            placeholder="{{ 'profile.bioPlaceholder' | translate }}"
+            tfOnlyAllow
+            [allowRegex]="'[a-zA-Z ]'"
+          ></textarea>
+
+          <mat-hint class="text-right text-sm text-slate-500"
+            >{{ bio.value.length }}/{{ bioMaxLength }}</mat-hint
+          >
+        </mat-form-field>
+        <div class="flex flex-col gap-6">
+          <!--Personal Info Text-->
+          <div class="flex flex-col">
+            <span class="font-medium capitalize">{{
+              "profile.personalInfo" | translate
+            }}</span>
+            <p class="text-sm text-slate-500">
+              {{ "profile.personalInfo.description" | translate }}
+            </p>
+          </div>
+          <!--Email-->
+          <mat-form-field>
+            <mat-label>
+              <span class="font-medium capitalize">{{
+                "profile.email" | translate
+              }}</span>
+            </mat-label>
+            <input
+              matInput
+              class="form-input"
+              placeholder="{{ 'profile.email' | translate }}"
+              formControlName="email"
+            />
+            <mat-error *ngIf="email?.hasError('pattern')">
+              {{ "profile.email.invalid" | translate }}
+            </mat-error>
+          </mat-form-field>
+
+          <!--Phone-->
+          <div class="flex flex-col">
+            <span class="font-medium capitalize">{{
+              "profile.phone" | translate
+            }}</span>
+            <input
+              class="form-input"
+              formControlName="phone"
+              tfIntlTelInput
+              [allowSelectCountry]="true"
+              [separateDialCode]="true"
+              (coutryData)="setCountryCode($event)"
+              tfOnlyAllow
+              [allowRegex]="'[0-9]'"
+              placeholder="{{ 'profile.phone' | translate }}"
+            />
+            <span
+              *ngIf="phone?.hasError('phoneError')"
+              class="ml-1 mt-1 flex items-center text-xs font-medium tracking-wide text-red-500"
+            >
+              {{ phone?.errors?.['phoneError'] | translate }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!--PROFILE USER ACCOUNT OPTIONS-->
+    <ul>
+      <!-- <li
+        class="flex cursor-pointer items-center justify-between px-4 py-3 font-medium"
+      >
+        <span class="text-slate-500">{{
+          "deactivate.account" | translate
+        }}</span>
+        <fa-icon [icon]="navArrowRigthIcon" class="flex text-xs"></fa-icon>
+      </li> -->
+      <li
+        class="flex cursor-pointer items-center justify-between px-4 py-3 font-medium"
+        (click)="onDeleteAccount()"
+      >
+        <span class="text-slate-500">{{ "delete.account" | translate }}</span>
+        <fa-icon [icon]="navArrowRigthIcon" class="flex text-xs"></fa-icon>
+      </li>
+    </ul>
+  </ng-container>
+</div>

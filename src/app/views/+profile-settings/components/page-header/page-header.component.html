@@ -1,0 +1,15 @@
+<div
+  class="flex h-14 flex-row items-center justify-between border-b-2 border-solid border-slate-300 bg-white px-4 py-3 tablet:fixed tablet:z-20 tablet:h-16 tablet:w-full"
+>
+  <div class="flex flex-row items-center gap-3">
+    <fa-icon
+      [icon]="navArrowLeftIcon"
+      [ngClass]="{ 'hidden tablet:flex': !showBack }"
+      class="cursor-pointer"
+      (click)="goBack()"
+    ></fa-icon>
+    <span class="text-lg font-medium uppercase text-slate-600">{{
+      title
+    }}</span>
+  </div>
+</div>

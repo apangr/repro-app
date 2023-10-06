@@ -1,0 +1,76 @@
+<div
+  class="h-screen w-screen min-w-[280px] sm:h-full sm:w-full"
+  [ngClass]="{
+    'min-w-[350px]': defaultSettingType === SettingsInstaceType.MODAL
+  }"
+>
+  <div class="flex h-14 flex-row items-center gap-3 px-4 py-3">
+    <fa-icon
+      *ngIf="defaultSettingType === SettingsInstaceType.ROUTE"
+      class="cursor-pointer"
+      [icon]="navArrowLeftIcon"
+      routerLink="/"
+    ></fa-icon>
+    <span class="text-xl font-medium uppercase text-slate-600">{{
+      "settings" | translate
+    }}</span>
+  </div>
+  <ul>
+    <!--Profile-->
+    <li
+      class="flex cursor-pointer items-center justify-between px-4 py-3 font-medium"
+      [routerLink]="[
+        defaultSettingType === SettingsInstaceType.MODAL
+          ? 'settings/edit-profile'
+          : 'edit-profile'
+      ]"
+      routerLinkActive="active-menu-item"
+    >
+      <span class="text-slate-500">{{ "profile.profile" | translate }}</span>
+      <fa-icon [icon]="navArrowRigthIcon" class="text-xs"></fa-icon>
+    </li>
+    <mat-divider></mat-divider>
+
+    <!--Help and Support-->
+    <li
+      class="flex cursor-pointer items-center justify-between px-4 py-3 font-medium"
+      [routerLink]="[
+        defaultSettingType === SettingsInstaceType.MODAL
+          ? 'settings/help-and-support'
+          : 'help-and-support'
+      ]"
+      routerLinkActive="active-menu-item"
+    >
+      <span class="text-slate-500">{{
+        "profile.contact_support" | translate
+      }}</span
+      ><fa-icon [icon]="navArrowRigthIcon" class="text-xs"></fa-icon>
+    </li>
+    <!--Language-->
+    <div
+      class="flex cursor-pointer items-center justify-between px-4 py-3 font-medium"
+      [matMenuTriggerFor]="langMenu"
+    >
+      <span class="text-slate-500">{{ "language" | translate }}</span
+      ><fa-icon [icon]="navArrowRigthIcon" class="text-xs"></fa-icon>
+    </div>
+    <mat-menu #langMenu="matMenu">
+      <button
+        mat-menu-item
+        *ngFor="let item of allLangs"
+        (click)="onSelectLanguage(item)"
+      >
+        {{ item | translate }}
+      </button>
+    </mat-menu>
+    <mat-divider></mat-divider>
+    <li
+      class="flex cursor-pointer flex-row content-center items-center gap-2 px-4 py-3"
+    >
+      <a (click)="onLogOut()">
+        <fa-icon [icon]="logOutIcon" class="mr-3 text-slate-700"></fa-icon>
+        <span class="text-slate-500">{{ "logout" | translate }}</span>
+      </a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,34 @@
+.banner {
+  /*   max-height: 240px;
+     min-height: 240px;*/
+  position: relative;
+  overflow-y: hidden;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  transition-property: max-height;
+  transition-delay: 0s;
+}
+
+.photo-wrapper {
+  background-clip: border-box;
+  background-color: white;
+  width: 125px;
+  height: 125px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: none;
+  margin: auto;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}

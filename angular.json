@@ -17,6 +17,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "cropperjs",
+              "recordrtc",
+              "apexcharts",
+              "card-validator"
+            ],
             "outputPath": "dist/repro-test-error",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -27,12 +33,34 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/themes/tailwind.scss",
+              "src/themes/themes.scss",
+              "src/themes/main.scss",
+              "src/styles/tailwind.scss",
+              "src/themes/vendor.scss",
+              "src/styles/styles.scss",
+              "node_modules/@angular/cdk/overlay-prebuilt.css",
+              "node_modules/cropperjs/dist/cropper.css"
             ],
-            "scripts": []
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/theme-utils",
+                "src/themes"
+              ]
+            },
+            "scripts": [],
+            "optimization": {
+              "scripts": true,
+              "styles": {
+                "minify": true,
+                "inlineCritical": true
+              },
+              "fonts": true
+            }
           },
           "configurations": {
             "production": {
@@ -90,11 +118,23 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/themes/tailwind.scss",
+              "src/themes/main.scss",
+              "src/styles/styles.scss",
+              "src/styles/tailwind.scss",
+              "node_modules/@angular/cdk/overlay-prebuilt.css",
+              "node_modules/cropperjs/dist/cropper.css"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/theme-utils",
+                "src/themes"
+              ]
+            },
             "scripts": []
           }
         }

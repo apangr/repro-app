@@ -1,0 +1,79 @@
+:root {
+  --cropper-outline-color: rgb(0 0 0 / 50%);
+  --cropper-overlay-color: white;
+}
+
+html {
+  @apply text-[#252525];
+}
+body {
+  @apply dark:bg-slate-800;
+}
+
+/****SHOW CONTENT WITH SLOW FADE IN****/
+.show-content {
+  animation: fade-in 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/****BROWERS SCROLLBAR STYLE****/
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9e1f63 rgb(200, 198, 198);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(200, 198, 198);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #9e1f63;
+  border-radius: 20px;
+  border: 3px solid rgb(200, 198, 198);
+}
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+textarea {
+  resize: none;
+  outline: 0;
+}
+
+.active {
+  @apply bg-gray-100 text-gray-900;
+}
+
+.backdrop-color {
+  background-color: rgba(255, 255, 255, 0.623);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}

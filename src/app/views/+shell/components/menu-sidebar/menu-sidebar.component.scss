@@ -1,0 +1,86 @@
+@use "dimensions" as var;
+
+.sidebar {
+  transition: all 0.5s ease;
+  width: var.$global-panel-width-expanded;
+}
+
+.sidebar-item-active {
+  @apply text-black;
+  span {
+    @apply font-semibold #{!important};
+  }
+}
+
+.compress-sidebar {
+  width: var.$global-panel-width;
+  .menu-box {
+    padding-inline: 0px;
+  }
+  .menu-logo {
+    padding: 5px 16px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      object-fit: cover;
+      object-position: left;
+    }
+  }
+  li {
+    @apply mb-3;
+    a {
+      justify-content: center;
+      tf-wallet div {
+        justify-content: center;
+      }
+    }
+    .menu-item-title {
+      display: none;
+    }
+    .desktop-add {
+      @apply hidden;
+    }
+    .mobile-add {
+      @apply block;
+    }
+  }
+  .create-menu-item {
+    @apply flex justify-center;
+  }
+}
+
+.create-post-button {
+  width: 60%;
+}
+
+@media (max-width: 1159px) {
+  .sidebar {
+    width: var.$global-panel-width;
+  }
+  /* .menu-logo {
+      padding: 5px 16px;
+     img {
+       width: 100%;
+       object-fit: cover;
+       object-position: left;
+     }
+   }*/
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: var.$global-panel-width;
+    bottom: 0;
+  }
+}
+
+.mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
+  right: 0;
+}
+.mat-badge-medium.mat-badge-above .mat-badge-content {
+  top: 0;
+}
+.mat-badge-content {
+  @apply bg-primary-400;
+}

@@ -1,0 +1,20 @@
+<div
+  class="flex w-72 flex-col justify-between rounded-md border border-solid border-slate-500 p-5"
+>
+  <div>
+    <h2 class="font-bold">
+      {{ "wallet.noMoney.title" | translate }}
+    </h2>
+  </div>
+  <p class="mt-4">
+    {{ "wallet.noMoney.description" | translate }}
+  </p>
+  <div class="items-cente mt-5 flex flex-row justify-center">
+    <button class="btn-solid-inverse" (click)="onCancel()">
+      {{ "cancel" | translate }}
+    </button>
+    <button class="btn-primary" (click)="goToWallet()">
+      {{ "wallet.title" | translate }}
+    </button>
+  </div>
+</div>

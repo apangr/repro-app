@@ -1,0 +1,18 @@
+<tf-page-header
+  [title]="'help_support.title' | translate"
+  [showBack]="true"
+></tf-page-header>
+<div class="mb-5">
+  <div
+    markdown
+    [innerHTML]="markdown | safe : 'SafeHtml'"
+    style="padding: 30px"
+  ></div>
+</div>
+<div class="flex flex-row justify-end px-5">
+  <a [href]="mailtoLink">
+    <button class="btn-primary">
+      {{ "help_support.send_email" | translate }}
+    </button>
+  </a>
+</div>

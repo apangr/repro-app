@@ -1,0 +1,28 @@
+@use "dimensions" as var;
+
+.main-content {
+  position: relative;
+  width: calc(100% - var.$global-panel-width-expanded);
+  left: var.$global-panel-width-expanded;
+}
+.expand-menu {
+  width: calc(100% - var.$global-panel-width-expanded);
+  left: var.$global-panel-width-expanded;
+}
+.collapse-menu {
+  width: calc(100% - var.$global-panel-width);
+  left: var.$global-panel-width;
+}
+
+@media (max-width: 1159px) {
+  .main-content {
+    width: calc(100% - var.$global-panel-width);
+    left: var.$global-panel-width;
+  }
+}
+@media (max-width: 768px) {
+  .main-content {
+    width: 100%;
+    left: 0;
+  }
+}

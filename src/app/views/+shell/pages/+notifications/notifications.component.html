@@ -1,0 +1,28 @@
+<div
+  class="min-h-full w-[600px] border border-slate-300 bg-white tablet:w-screen"
+>
+  <tf-page-header
+    [title]="'notifications' | translate"
+    [showBack]="true"
+  ></tf-page-header>
+  <div
+    class="no-scrollbar mt-16 flex max-h-[75vh] min-h-[75vh] flex-col items-center overflow-y-auto sm:mt-0"
+  >
+    <ng-container *ngIf="notifications && notifications.length; else noNotf">
+      <ul class="w-full">
+        <li *ngFor="let item of notifications">
+          <tf-notification-item [notification]="item"></tf-notification-item>
+        </li>
+      </ul>
+    </ng-container>
+    <ng-template #noNotf>
+      <div class="flex min-h-[75vh] flex-col items-center justify-center gap-4">
+        <img src="assets/angular.png" class="w-56" />
+        <span class="font-semibold">{{
+          "notification.noNotifications.title" | translate
+        }}</span>
+        <span>{{ "notification.noNotifications.subtitle" | translate }}</span>
+      </div>
+    </ng-template>
+  </div>
+</div>

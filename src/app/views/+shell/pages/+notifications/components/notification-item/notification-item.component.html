@@ -1,0 +1,46 @@
+<div
+  class="flex cursor-pointer flex-row items-center justify-between px-3 py-1 hover:bg-slate-200"
+  (click)="onNotification()"
+>
+  <div class="flex flex-row items-center">
+    <div class="mr-2 h-12 w-12">
+      <img
+        (click)="onUserProfile(notification.user)"
+        class="cursor-pointer rounded-full border-2 border-white bg-slate-300"
+        [src]="notification.profile.avatar"
+        alt="Avatar"
+        onerror="this.src='assets/angular.png'"
+      />
+    </div>
+    <div class="flex flex-col">
+      <span
+        class="font-bold"
+        [ngClass]="{ 'text-slate-500': notification.view }"
+        >{{ "notification.new.title" | translate }}</span
+      >
+      <p
+        class="max-w-[480px] dark:text-white"
+        [ngClass]="{ 'text-slate-500': notification.view }"
+      >
+        {{ notification.textI18n }}
+      </p>
+
+      <span
+        class="text-sm font-bold tablet:text-xs"
+        [ngClass]="{
+          'text-slate-500': notification.view,
+          'text-primary': !notification.view
+        }"
+      >
+        {{ notification.createdAt | tfDateAgo : "normal" }}
+      </span>
+    </div>
+  </div>
+  <div class="flex flex-row items-center gap-3">
+    <div
+      class="h-2 w-2 rounded-full bg-primary"
+      *ngIf="!notification.view"
+    ></div>
+    <fa-icon [icon]="navArrowRigthIcon" class="text-xs"></fa-icon>
+  </div>
+</div>

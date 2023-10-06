@@ -1,0 +1,22 @@
+<div
+  class="flex min-h-screen w-full items-center justify-center bg-gray-100 p-4"
+  data-new-gr-c-s-check-loaded="14.1108.0"
+  data-gr-ext-installed=""
+>
+  <div class="flex h-[calc(100vh-80px)] w-full items-center justify-center p-5">
+    <div class="flex flex-col items-center text-center">
+      <h1 class="mt-5 text-[34px] font-bold text-slate-800 lg:text-[50px]">
+        {{ "errors.serverError.title" | translate }}
+      </h1>
+      <p class="mt-5 text-slate-600 lg:text-lg">
+        {{ "errors.serverError.desc1" | translate }}
+        <br />
+        {{ "errors.serverError.desc2" | translate }}
+      </p>
+
+      <button class="btn-solid mt-4" [routerLink]="['/']">
+        {{ "errors.goHome" | translate }}
+      </button>
+    </div>
+  </div>
+</div>

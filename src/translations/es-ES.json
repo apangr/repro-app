@@ -1,0 +1,10 @@
+{
+  "sidebar": {
+    "home": "Inicio",
+    "notifications": "Notificaciones",
+    "messages": "Mensajes",
+    "settings": "Ajustes",
+    "profile": "Perfil",
+    "create": "Crear"
+  }
+}

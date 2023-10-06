@@ -1,0 +1,10 @@
+/* 1. Components */
+@use "components/int-tel-input.scss";
+
+/* 2. Overrides */
+@use "overrides/angular-material";
+/* Swiper and Modules Style */
+@import "swiper/css";
+@import "swiper/css/navigation";
+/* Emoji Picker Style */
+@import "@ctrl/ngx-emoji-mart/picker";

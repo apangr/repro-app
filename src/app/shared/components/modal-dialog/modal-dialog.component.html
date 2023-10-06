@@ -1,0 +1,40 @@
+<div>
+  <div class="relative h-full w-full max-w-[886px] md:h-auto">
+    <div
+      class="rounded-sm bg-white shadow-dialog dark:border-slate-500 dark:bg-gray-700"
+      [ngClass]="{ 'rounded-lg': options?.borderStyle === 'rounded' }"
+    >
+      <button
+        *ngIf="options?.closable"
+        (click)="closeModal()"
+        data-dismiss="modal"
+        aria-label="Close"
+        type="button"
+        class="absolute right-1.5 z-10 ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:text-gray-900 dark:hover:text-white"
+      >
+        <fa-icon [icon]="closeIcon"></fa-icon>
+        <span class="sr-only">Close modal</span>
+      </button>
+      <header
+        *ngIf="titleTemplateRef$ | async as titleTemplate"
+        class="h-20 items-center border-b border-gray-200"
+      >
+        <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
+      </header>
+      <!---Modal Content--->
+      <div>
+        <tf-dialog-component-outlet
+          [component]="childComponentType"
+          (create)="onCreate($event)"
+        >
+        </tf-dialog-component-outlet>
+      </div>
+      <!---Modal Footer--->
+      <div>
+        <ng-container
+          *ngTemplateOutlet="buttonsTemplateRef$ | async"
+        ></ng-container>
+      </div>
+    </div>
+  </div>
+</div>

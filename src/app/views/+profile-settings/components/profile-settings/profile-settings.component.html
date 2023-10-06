@@ -1,0 +1,14 @@
+<div
+  class="parent mb-5 flex w-full flex-row rounded border-2 border-solid border-slate-300 bg-white tablet:border-0"
+>
+  <!---LEFT PANEL--->
+  <div
+    class="min-h-full w-72 min-w-[250px] border-r-2 border-solid border-slate-300 sidebar-breakpoint:hidden"
+  >
+    <tf-profile-settings-menu></tf-profile-settings-menu>
+  </div>
+  <!---SETTING CONTENT--->
+  <div class="min-h-full w-[600px] tablet:w-screen">
+    <router-outlet></router-outlet>
+  </div>
+</div>

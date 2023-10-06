@@ -1,0 +1,52 @@
+import {
+  LoginSuccessful,
+  SignupInput,
+  ValidateCodeOutput,
+} from '@app/graphql/types';
+
+//Login
+export const mockLoginBody = {
+  identifier: 'test@gmail.com',
+  password: '12345678',
+};
+export const mockLoginSuccessfullResponse: LoginSuccessful = {
+  accessToken:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2ZjNjNDg3OTZlZDJmNzZiZTQ5NDAiLCJpZGVudGlmaWVyIjoiKzEzMDU0OTgyOTI5Iiwicm9sZXMiOlsiU3Vic2NyaWJlciJdLCJpZGVudGl0eVByb3ZpZGVyIjp7ImVuYWJsZSI6dHJ1ZSwicHJvdmlkZXIiOiJUb3BGb2xsb3dlcnMifSwibGFuZ0NvZGUiOiJlbiIsImNyZWF0ZWRBdCI6IjIwMjMtMDEtMTdUMTk6MTU6MTYuNDQ0WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMTdUMjA6MTM6MDkuMjYyWiIsIl9fdiI6MCwiYmlydGhkYXkiOiIxOTk5LTAxLTA2VDAwOjAwOjAwLjAwMFoiLCJlbWFpbCI6eyJlbmFibGUiOmZhbHNlLCJlbWFpbCI6InRlc3RAdG9wZm9sbG93ZXJzLmNvbSJ9LCJsYXN0TmFtZSI6IlRlc3QiLCJuYW1lIjoiVGVzdCIsImlhdCI6MTY3Mzk4NjM4OSwiZXhwIjoxNjczOTg5Mzg5fQ.jI302nh2NOsrRUNDonVLDyEuIohPdufYazioGXCJL_8',
+  refreshToken:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2M2ZjNjNDg3OTZlZDJmNzZiZTQ5NDAiLCJpYXQiOjE2NzM5ODYzODksImV4cCI6MTY3NDQxODM4OX0.S1cvi1jgGGkl8AQia0gdN5nyLbmIGNZE6ghkp190aYY',
+};
+
+// Sign Up
+export const mockSignUpBody: { input: SignupInput } = {
+  input: {
+    name: 'Test',
+    displayName: 'Test',
+    birthday: '1999-12-12',
+    email: 'test@topfollowers.com',
+    password: '1234.Abc*',
+  },
+};
+
+export const mockSignUpResponse = {
+  accessToken:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2ZjNjNDg3OTZlZDJmNzZiZTQ5NDAiLCJpZGVudGlmaWVyIjoiKzEzMDU0OTgyOTI5Iiwicm9sZXMiOlsiU3Vic2NyaWJlciJdLCJpZGVudGl0eVByb3ZpZGVyIjp7ImVuYWJsZSI6dHJ1ZSwicHJvdmlkZXIiOiJUb3BGb2xsb3dlcnMifSwibGFuZ0NvZGUiOiJlbiIsImNyZWF0ZWRBdCI6IjIwMjMtMDEtMTdUMTk6MTU6MTYuNDQ0WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMTdUMjA6MTM6MDkuMjYyWiIsIl9fdiI6MCwiYmlydGhkYXkiOiIxOTk5LTAxLTA2VDAwOjAwOjAwLjAwMFoiLCJlbWFpbCI6eyJlbmFibGUiOmZhbHNlLCJlbWFpbCI6InRlc3RAdG9wZm9sbG93ZXJzLmNvbSJ9LCJsYXN0TmFtZSI6IlRlc3QiLCJuYW1lIjoiVGVzdCIsImlhdCI6MTY3Mzk4NjM4OSwiZXhwIjoxNjczOTg5Mzg5fQ.jI302nh2NOsrRUNDonVLDyEuIohPdufYazioGXCJL_8',
+  refreshToken:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2M2ZjNjNDg3OTZlZDJmNzZiZTQ5NDAiLCJpYXQiOjE2NzM5ODYzODksImV4cCI6MTY3NDQxODM4OX0.S1cvi1jgGGkl8AQia0gdN5nyLbmIGNZE6ghkp190aYY',
+};
+
+// Validate Identifier
+export const mockValidateIdentifierBody = {
+  identifier: '+12012220145',
+};
+
+// Validate Identifier By Code
+export const mockValidateIdentifierByCodeBody = {
+  identifier: '+12012220145',
+  code: '1234',
+};
+export const mockValidateIdentifierByCodeResponse: ValidateCodeOutput = {
+  accessToken:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2ZjNjNDg3OTZlZDJmNzZiZTQ5NDAiLCJpZGVudGlmaWVyIjoiKzEzMDU0OTgyOTI5Iiwicm9sZXMiOlsiU3Vic2NyaWJlciJdLCJpZGVudGl0eVByb3ZpZGVyIjp7ImVuYWJsZSI6dHJ1ZSwicHJvdmlkZXIiOiJUb3BGb2xsb3dlcnMifSwibGFuZ0NvZGUiOiJlbiIsImNyZWF0ZWRBdCI6IjIwMjMtMDEtMTdUMTk6MTU6MTYuNDQ0WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMTdUMjA6MTM6MDkuMjYyWiIsIl9fdiI6MCwiYmlydGhkYXkiOiIxOTk5LTAxLTA2VDAwOjAwOjAwLjAwMFoiLCJlbWFpbCI6eyJlbmFibGUiOmZhbHNlLCJlbWFpbCI6InRlc3RAdG9wZm9sbG93ZXJzLmNvbSJ9LCJsYXN0TmFtZSI6IlRlc3QiLCJuYW1lIjoiVGVzdCIsImlhdCI6MTY3Mzk4NjM4OSwiZXhwIjoxNjczOTg5Mzg5fQ.jI302nh2NOsrRUNDonVLDyEuIohPdufYazioGXCJL_8',
+  refreshToken:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2M2ZjNjNDg3OTZlZDJmNzZiZTQ5NDAiLCJpYXQiOjE2NzM5ODYzODksImV4cCI6MTY3NDQxODM4OX0.S1cvi1jgGGkl8AQia0gdN5nyLbmIGNZE6ghkp190aYY',
+};

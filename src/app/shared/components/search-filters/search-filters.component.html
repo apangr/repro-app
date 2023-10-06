@@ -1,0 +1,64 @@
+<div class="min-w-[250px] rounded border border-slate-400 p-5">
+  <form [formGroup]="filtersForm" (ngSubmit)="onSubmit()">
+    <ul class="mt-5">
+      <li class="flex h-12 items-center justify-between">
+        <span>{{ "home.search.filters.all" | translate }}</span
+        ><mat-slide-toggle
+          (change)="onAllChange()"
+          formControlName="all"
+          aria-label="all"
+        ></mat-slide-toggle>
+      </li>
+      <mat-divider></mat-divider>
+      <li class="flex h-12 items-center justify-between">
+        <span>{{ "home.search.filters.popular" | translate }}</span
+        ><mat-slide-toggle
+          (change)="onOptionChange()"
+          formControlName="most_popular"
+          aria-label="most_popular"
+        ></mat-slide-toggle>
+      </li>
+      <li class="flex h-12 items-center justify-between">
+        <span>{{ "home.search.filters.follow" | translate }}</span
+        ><mat-slide-toggle
+          (change)="onOptionChange()"
+          formControlName="follow"
+          aria-label="follow"
+        ></mat-slide-toggle>
+      </li>
+      <li class="flex h-12 items-center justify-between">
+        <span>{{ "home.search.filters.label" | translate }}</span
+        ><mat-slide-toggle
+          (change)="onOptionChange()"
+          formControlName="label"
+          aria-label="label"
+        ></mat-slide-toggle>
+      </li>
+      <li class="flex h-12 items-center justify-between">
+        <span>{{ "home.search.filters.closeToMe" | translate }}</span
+        ><mat-slide-toggle
+          (change)="onOptionChange()"
+          formControlName="close_to_me"
+          aria-label="close to me"
+        ></mat-slide-toggle>
+      </li>
+    </ul>
+
+    <div class="mt-5 flex flex-row justify-end gap-3">
+      <button
+        type="button"
+        class="disabled:opacity-60"
+        (click)="onClearFilters()"
+        [disabled]="filtersForm.get('all')?.value"
+      >
+        {{ "clear" | translate }}
+      </button>
+      <button
+        type="submit"
+        class="rounded-full bg-primary px-5 py-1.5 text-sm font-medium uppercase text-white disabled:opacity-50"
+      >
+        {{ "apply" | translate }}
+      </button>
+    </div>
+  </form>
+</div>

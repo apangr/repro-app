@@ -1,0 +1,65 @@
+<div>
+  <div class="relative h-full w-full max-w-md md:h-auto">
+    <div
+      class="relative rounded-lg border-2 border-solid border-slate-500 bg-white shadow dark:border-slate-500 dark:bg-gray-700"
+    >
+      <button
+        type="button"
+        class="top- absolute right-1.5 ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:text-gray-900 dark:hover:text-white"
+        data-modal-toggle="popup-modal"
+        (click)="close.next()"
+      >
+        <fa-icon [icon]="closeIcon"></fa-icon>
+        <span class="sr-only">Close modal</span>
+      </button>
+      <div class="p-6 text-center">
+        <h3
+          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+          *ngIf="options.title"
+        >
+          <strong>{{ options.title | translate }}</strong>
+        </h3>
+        <p class="dark:text-gray-400">
+          <ng-container *ngIf="options.message">
+            {{ options.message | translate }}
+          </ng-container>
+        </p>
+        <ng-container *ngIf="options.templateRef">
+          <ng-container
+            *ngTemplateOutlet="
+              options.templateRef;
+              context: options.templateContext
+            "
+          ></ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div role="alert" aria-live="assertive" aria-atomic="true">
+  <div [ngClass]="options.type">
+    <strong>{{ options.title }}</strong>
+    <button
+      type="button"
+      class="close"
+      data-dismiss="toast"
+      aria-label="Close"
+      (click)="close.next()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div>
+    <ng-container *ngIf="options.message">
+      {{ options.message }}
+    </ng-container>
+    <ng-container *ngIf="options.templateRef">
+      <ng-container
+        *ngTemplateOutlet="
+          options.templateRef;
+          context: options.templateContext
+        "
+      ></ng-container>
+    </ng-container>
+  </div>
+</div> -->

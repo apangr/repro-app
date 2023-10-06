@@ -1,0 +1,7 @@
+@use "dimensions" as dim;
+
+@media (max-width: 786px) {
+  .parent {
+    margin-bottom: calc(dim.$global-panel-width + 2rem);
+  }
+}

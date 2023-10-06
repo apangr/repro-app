@@ -1,0 +1,56 @@
+@use "dimensions" as dim;
+
+@media (min-height: 700px) and (max-height: 789px) {
+  .feed {
+    width: 590px;
+  }
+}
+.feed {
+  position: relative;
+  overflow-y: hidden;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  transition-property: max-height;
+  transition-delay: 0s;
+}
+.parent {
+  -webkit-box-align: stretch;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  align-items: stretch;
+  display: flex;
+  flex-basis: auto;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.photo-wrapper {
+  background-clip: border-box;
+  background-color: white;
+  width: 125px;
+  height: 125px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: none;
+  margin: auto;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (max-width: 786px) {
+  .parent {
+    margin-bottom: calc(dim.$global-panel-width + 2rem);
+  }
+}

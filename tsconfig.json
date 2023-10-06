@@ -15,14 +15,24 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "strictPropertyInitialization": false,
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@app/core/*": ["src/app/core/*"],
+      "@app/shared/*": ["src/app/shared/*"],
+      "@app/root-store/*": ["src/app/root-store/*"],
+      "@env/*": ["src/environments/*"],
+      "@app/graphql/*": ["src/app/graphql/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

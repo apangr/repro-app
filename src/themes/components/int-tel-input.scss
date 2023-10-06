@@ -1,0 +1,21 @@
+/****INT-TEL-INPUT PACKAGE CUSTOM STYLE****/
+.iti {
+  @apply w-full;
+  &__flag-container {
+    padding: 2px;
+  }
+  &__arrow {
+    @apply hidden;
+  }
+  &__selected-flag {
+    border-bottom-left-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+  }
+  &--separate-dial-code &__selected-flag {
+    @apply bg-white;
+  }
+  &__country-list,
+  &__selected-flag {
+    @apply dark:bg-slate-700 dark:text-white;
+  }
+}

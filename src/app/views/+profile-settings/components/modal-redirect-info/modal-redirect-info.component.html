@@ -1,0 +1,17 @@
+<div
+  class="flex w-80 flex-col justify-between rounded-md border border-solid border-slate-500 p-5"
+>
+  <div class="min-h-[50px] pt-3">
+    <p class="mb-4 text-sm">
+      {{ message | translate }}
+    </p>
+  </div>
+  <div class="flex flex-row justify-end gap-3">
+    <button type="button" class="btn mr-4 text-slate-500" (click)="onCancel()">
+      {{ "cancel" | translate }}
+    </button>
+    <button type="button" class="btn-primary max-w-[118]" (click)="onConfirm()">
+      {{ "confirm" | translate }}
+    </button>
+  </div>
+</div>
